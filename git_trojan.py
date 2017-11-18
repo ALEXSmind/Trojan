@@ -107,12 +107,11 @@ def store_module_result(data):
 	repo.commit(name = "ratel", email = "ratel@friedco.de", message = "new \
 		   	data commit")
 
-	repo.auth(username = "Dennis", password = "apple@511126")
+#repo.auth(username = "Dennis", password = "apple@511126")
 
-#	repo.push()
+	repo.push()
 
 	return
-
 
 def module_runner(module):
 	task_queue.put(1)
@@ -134,6 +133,7 @@ while True:
 			t = threading.Thread(target = module_runner, args =
 					(task['module'],))
 			t.start()
+			break
 #			time.sleep(random.randint(1, 10))
 
 	sys.exit(0)
